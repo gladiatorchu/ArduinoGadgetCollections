@@ -17,7 +17,7 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-  
+
   Thanks Paul Cowan, the library is easy to use. It make the NTC measurement
   easy. As I am studying the effect of different configuration, some modification
   has been made based on Paul Cowan version.
@@ -49,6 +49,7 @@ class Thermistor {
     const double _bCoef;
     const int _samples;
     const int _sampleDelay;
+    const bool _connectConfig;
 
   public:
 
@@ -63,8 +64,9 @@ class Thermistor {
     * arg 8: bCoef: Beta coefficient (or constant) of the thermistor (will be documented with the thermistor, typically 3380, 3435, or 3950)
     * arg 9: samples: Number of analog samples to average (for smoothing)
     * arg 10: sampleDelay: Milliseconds between samples (for smoothing)
+    * arg 11: connectConfig: [1 - Pull-Up config] [0 - Pull-down config]
     */
-    Thermistor(int pin, double vcc, double analogReference, int adcMax, int seriesResistor, int thermistorNominal, int temperatureNominal, int bCoef, int samples, int sampleDelay);
+    Thermistor(int pin, double vcc, double analogReference, int adcMax, int seriesResistor, int thermistorNominal, int temperatureNominal, int bCoef, int samples, int sampleDelay, bool connectConfig);
 
     // Smoothed ADC value
     double readADC() const;
